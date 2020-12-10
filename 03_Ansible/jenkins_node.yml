@@ -1,0 +1,26 @@
+- name: Play1
+  hosts: nodes
+  become: true
+  tasks:
+    - name: delete directory
+      file:
+        path: /jenkins_node
+        state: absent
+    - name: create directory
+      file:
+        path: /jenkins_node
+        state: directory
+    - name: change permissions to the folder
+      file:
+        path: /jenkins_node
+        state: directory
+        owner: devops
+        group: devops
+        mode: u=rwx,g=rwx,o=rwx
+    - name: download agent.jar
+      get_url:
+        url: http://10.156.0.6:8080/jnlpJars/agent.jar
+        dest: /jenkins_node/agent.jar
+        owner: devops
+        group: devops
+        mode: u=rwx,g=rwx,o=rwx
