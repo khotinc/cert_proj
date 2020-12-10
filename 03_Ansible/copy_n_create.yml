@@ -1,0 +1,11 @@
+- name: Play1
+  hosts: nodes
+  tasks:
+    - name: copy task
+      copy:
+        src: /tmp/a.txt
+        dest: /tmp
+    - name: create directory
+      file:
+        path: /tmp/devops
+        state: directory

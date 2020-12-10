@@ -1,0 +1,6 @@
+- hosts: nodes
+  tasks:
+    - apt:
+       name: python2.7,watchman,python2
+       update_cache: yes
+  become: true

@@ -1,0 +1,6 @@
+---
+- name: prepare selenium
+  hosts: nodes
+  become: true
+  roles:
+  - selenium

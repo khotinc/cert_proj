@@ -1,0 +1,17 @@
+- hosts: nodes
+  tasks:
+    - apt_repository:
+       repo: ppa:openjdk-r/ppa
+       update_cache: yes
+    - apt:
+       name: openjdk-8-jdk
+       update_cache: yes
+    - name: command run
+      shell: printf 'JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64' >> /etc/profile
+    - name: path storage
+      shell: printf 'PATH=\$JAVA_HOME/bin:\$PATH' >> /etc/profile
+    - name: sssource storage
+      shell: source /etc/profile
+      args:
+        executable: /bin/bash
+  become: true

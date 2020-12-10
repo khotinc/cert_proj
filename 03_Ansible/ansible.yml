@@ -1,0 +1,6 @@
+- hosts: nodes
+  tasks:
+    - apt:
+       name: zip,ansible
+       update_cache: yes
+  become: true
